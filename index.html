@@ -13,7 +13,10 @@
         body {
             min-height: 100vh;
             overflow: hidden;
-            background: radial-gradient(circle at center, #2b0033 0%, #050005 45%, #000000 100%);
+            background:
+                radial-gradient(circle at 50% 45%, rgba(115, 0, 160, 0.5), transparent 32%),
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08), transparent 20%),
+                linear-gradient(135deg, #000000 0%, #09000d 45%, #1b0026 100%);
             font-family: "Times New Roman", serif;
         }
 
@@ -22,101 +25,124 @@
             inset: 0;
             z-index: 0;
             overflow: hidden;
-            perspective: 1000px;
+            perspective: 1200px;
         }
 
         .piece {
             position: absolute;
             top: -420px;
-            width: 280px;
-            height: 280px;
+            width: 330px;
+            height: 330px;
+            opacity: 0.72;
+            transform-style: preserve-3d;
 
             background:
-                linear-gradient(135deg,
+                linear-gradient(115deg,
                     #ffffff 0%,
-                    #6e6e6e 18%,
-                    #f8f8f8 35%,
-                    #202020 50%,
-                    #dcdcdc 68%,
-                    #ffffff 82%,
-                    #5a5a5a 100%);
+                    #818181 12%,
+                    #f7f7f7 25%,
+                    #2a2a2a 39%,
+                    #f1f1f1 52%,
+                    #777777 65%,
+                    #ffffff 78%,
+                    #3b3b3b 100%);
 
-            clip-path: path("M 60 20 C 85 20 95 40 86 58 C 80 72 92 84 108 74 C 130 60 155 75 155 100 C 155 125 130 140 108 126 C 92 116 80 128 86 142 C 95 160 85 180 60 180 L 20 180 L 20 140 C 20 118 45 110 58 126 C 68 138 84 130 78 114 C 68 90 82 68 108 74 C 124 78 132 62 118 52 C 100 38 108 20 132 20 L 180 20 L 180 60 C 180 82 155 90 142 74 C 132 62 116 70 122 86 C 132 110 118 132 92 126 C 76 122 68 138 82 148 C 100 162 92 180 68 180 L 20 180 L 20 20 Z");
+            clip-path: polygon(
+                28% 0%, 72% 0%,
+                72% 18%, 84% 18%, 84% 31%, 72% 31%,
+                72% 100%, 28% 100%,
+                28% 72%, 16% 72%, 16% 59%, 28% 59%,
+                28% 0%
+            );
 
-            transform-style: preserve-3d;
             box-shadow:
-                inset -18px -18px 35px rgba(0,0,0,0.65),
-                inset 18px 18px 35px rgba(255,255,255,0.75),
-                0 0 30px rgba(255,255,255,0.4),
-                0 0 70px rgba(168,85,247,0.5);
+                inset 18px 18px 35px rgba(255,255,255,0.7),
+                inset -22px -22px 40px rgba(0,0,0,0.75),
+                0 0 35px rgba(255,255,255,0.35),
+                0 0 85px rgba(168,85,247,0.5);
 
-            animation: fall3d linear infinite;
-            opacity: 0.78;
+            animation: fall3d linear infinite, chromePulse 5s ease-in-out infinite;
         }
 
         .piece::before {
             content: "";
             position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(75deg,
-                    transparent 0%,
-                    rgba(255,255,255,0.75) 28%,
-                    transparent 45%,
-                    rgba(255,255,255,0.35) 60%,
-                    transparent 100%);
-            animation: chromeShine 5s ease-in-out infinite;
+            width: 34%;
+            height: 34%;
+            border-radius: 50%;
+            top: 33%;
+            right: -17%;
+            background: inherit;
+            box-shadow:
+                inset 10px 10px 22px rgba(255,255,255,0.6),
+                inset -12px -12px 25px rgba(0,0,0,0.65);
         }
 
         .piece::after {
             content: "";
             position: absolute;
-            inset: 8px;
-            border: 2px solid rgba(255,255,255,0.28);
-            border-radius: 28px;
-            opacity: 0.5;
+            width: 34%;
+            height: 34%;
+            border-radius: 50%;
+            left: -17%;
+            top: 33%;
+            background: #050005;
+            box-shadow:
+                inset 8px 8px 20px rgba(0,0,0,0.95),
+                inset -5px -5px 12px rgba(255,255,255,0.16);
         }
 
-        .piece:nth-child(1) { left: 2%;  width: 300px; height: 300px; animation-duration: 34s; }
-        .piece:nth-child(2) { left: 18%; width: 340px; height: 340px; animation-duration: 42s; animation-delay: 4s; }
-        .piece:nth-child(3) { left: 36%; width: 290px; height: 290px; animation-duration: 38s; animation-delay: 7s; }
-        .piece:nth-child(4) { left: 53%; width: 360px; height: 360px; animation-duration: 47s; animation-delay: 2s; }
-        .piece:nth-child(5) { left: 72%; width: 320px; height: 320px; animation-duration: 40s; animation-delay: 5s; }
-        .piece:nth-child(6) { left: 86%; width: 350px; height: 350px; animation-duration: 45s; animation-delay: 9s; }
+        .piece span {
+            position: absolute;
+            width: 34%;
+            height: 34%;
+            border-radius: 50%;
+            bottom: -17%;
+            left: 33%;
+            background: inherit;
+            box-shadow:
+                inset 10px 10px 22px rgba(255,255,255,0.6),
+                inset -12px -12px 25px rgba(0,0,0,0.65);
+        }
+
+        .piece:nth-child(1) { left: -4%;  width: 360px; height: 360px; animation-duration: 34s; animation-delay: 0s; }
+        .piece:nth-child(2) { left: 15%;  width: 420px; height: 420px; animation-duration: 42s; animation-delay: 5s; }
+        .piece:nth-child(3) { left: 38%;  width: 350px; height: 350px; animation-duration: 39s; animation-delay: 9s; }
+        .piece:nth-child(4) { left: 58%;  width: 460px; height: 460px; animation-duration: 48s; animation-delay: 2s; }
+        .piece:nth-child(5) { left: 80%;  width: 390px; height: 390px; animation-duration: 44s; animation-delay: 7s; }
 
         @keyframes fall3d {
             0% {
-                transform: translateY(-450px) rotateX(20deg) rotateY(0deg) rotateZ(0deg);
+                transform: translateY(-450px) rotateX(15deg) rotateY(0deg) rotateZ(0deg);
             }
             50% {
-                transform: translateY(55vh) rotateX(180deg) rotateY(220deg) rotateZ(90deg);
+                transform: translateY(55vh) rotateX(120deg) rotateY(180deg) rotateZ(80deg);
             }
             100% {
-                transform: translateY(130vh) rotateX(360deg) rotateY(420deg) rotateZ(180deg);
+                transform: translateY(135vh) rotateX(250deg) rotateY(360deg) rotateZ(160deg);
             }
         }
 
-        @keyframes chromeShine {
+        @keyframes chromePulse {
             0%, 100% {
-                transform: translateX(-80%);
-                opacity: 0.25;
+                filter: brightness(1) contrast(1.15);
             }
             50% {
-                transform: translateX(80%);
-                opacity: 0.75;
+                filter: brightness(1.45) contrast(1.35);
             }
         }
 
         .content {
             position: relative;
-            z-index: 2;
+            z-index: 5;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 30px;
+            padding: 35px;
+            background: rgba(0,0,0,0.15);
         }
 
         .chrome-text {
@@ -124,55 +150,65 @@
             background: linear-gradient(
                 120deg,
                 #ffffff 0%,
-                #bfbfbf 20%,
-                #ffffff 40%,
-                #6e6e6e 60%,
-                #ffffff 80%,
-                #a0a0a0 100%
+                #d7d7d7 16%,
+                #777777 31%,
+                #ffffff 48%,
+                #5e5e5e 64%,
+                #f4f4f4 82%,
+                #a6a6a6 100%
             );
             -webkit-background-clip: text;
             background-clip: text;
         }
 
         h1 {
-            font-size: 100px;
-            letter-spacing: 10px;
+            font-size: 110px;
+            letter-spacing: 12px;
             text-transform: uppercase;
             font-weight: 400;
+            line-height: 1;
             text-shadow:
-                0 0 8px rgba(255,255,255,0.4),
-                0 0 18px rgba(168,85,247,0.35);
+                0 0 2px rgba(255,255,255,0.65),
+                0 0 14px rgba(168,85,247,0.45);
         }
 
         h2 {
-            margin-top: 20px;
+            margin-top: 22px;
             font-family: Arial, sans-serif;
             font-size: 18px;
-            letter-spacing: 6px;
+            letter-spacing: 7px;
             text-transform: uppercase;
+            font-weight: 400;
         }
 
         p {
-            margin-top: 35px;
+            margin-top: 34px;
             font-family: Arial, sans-serif;
-            font-size: 16px;
+            font-size: 15px;
             letter-spacing: 5px;
             text-transform: uppercase;
         }
 
         .button {
-            margin-top: 45px;
-            padding: 18px 55px;
-            border: 1px solid #cfcfcf;
+            margin-top: 46px;
+            padding: 18px 58px;
+            border: 1px solid rgba(230,230,230,0.85);
             font-family: Arial, sans-serif;
             letter-spacing: 4px;
             text-decoration: none;
             text-transform: uppercase;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.06);
+            box-shadow:
+                0 0 18px rgba(255,255,255,0.18),
+                0 0 36px rgba(168,85,247,0.28);
+        }
+
+        .button:hover {
+            background: rgba(255,255,255,0.14);
         }
 
         .links {
-            margin-top: 50px;
+            margin-top: 46px;
             font-family: Arial, sans-serif;
         }
 
@@ -186,12 +222,28 @@
 
         @media (max-width: 600px) {
             h1 {
-                font-size: 55px;
+                font-size: 56px;
+                letter-spacing: 5px;
+            }
+
+            h2 {
+                font-size: 12px;
+                letter-spacing: 4px;
+            }
+
+            p {
+                font-size: 11px;
+                letter-spacing: 3px;
+            }
+
+            .button {
+                padding: 15px 30px;
+                font-size: 11px;
             }
 
             .piece {
-                width: 190px !important;
-                height: 190px !important;
+                width: 230px !important;
+                height: 230px !important;
             }
         }
     </style>
@@ -200,12 +252,11 @@
 <body>
 
     <div class="background">
-        <div class="piece"></div>
-        <div class="piece"></div>
-        <div class="piece"></div>
-        <div class="piece"></div>
-        <div class="piece"></div>
-        <div class="piece"></div>
+        <div class="piece"><span></span></div>
+        <div class="piece"><span></span></div>
+        <div class="piece"><span></span></div>
+        <div class="piece"><span></span></div>
+        <div class="piece"><span></span></div>
     </div>
 
     <div class="content">
