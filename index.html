@@ -4,68 +4,228 @@
     <title>Puzzled</title>
 
     <style>
-        body {
+        * {
             margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: Arial, sans-serif;
-            color: white;
-            text-align: center;
-            overflow: hidden;
-
-            /* Animated gradient background */
-            background: linear-gradient(-45deg, #0a0a0a, #1a001f, #2b0033, #000000);
-            background-size: 400% 400%;
-            animation: gradientMove 10s ease infinite;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        body {
+            min-height: 100vh;
+            overflow: hidden;
+            font-family: "Times New Roman", serif;
+            color: white;
+            background: radial-gradient(circle at center, #2b0033 0%, #050005 45%, #000000 100%);
+        }
+
+        .background {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .puzzle {
+            position: absolute;
+            top: -120px;
+            font-size: 60px;
+            color: rgba(220, 220, 220, 0.75);
+            text-shadow:
+                0 0 10px rgba(255, 255, 255, 0.9),
+                0 0 25px rgba(160, 60, 255, 0.7),
+                0 0 45px rgba(120, 0, 180, 0.8);
+            animation: fall linear infinite;
+            opacity: 0.75;
+        }
+
+        .puzzle:nth-child(1) {
+            left: 5%;
+            animation-duration: 18s;
+            animation-delay: 0s;
+            font-size: 85px;
+        }
+
+        .puzzle:nth-child(2) {
+            left: 18%;
+            animation-duration: 24s;
+            animation-delay: 3s;
+            font-size: 45px;
+        }
+
+        .puzzle:nth-child(3) {
+            left: 32%;
+            animation-duration: 20s;
+            animation-delay: 6s;
+            font-size: 70px;
+        }
+
+        .puzzle:nth-child(4) {
+            left: 48%;
+            animation-duration: 28s;
+            animation-delay: 1s;
+            font-size: 50px;
+        }
+
+        .puzzle:nth-child(5) {
+            left: 63%;
+            animation-duration: 22s;
+            animation-delay: 5s;
+            font-size: 90px;
+        }
+
+        .puzzle:nth-child(6) {
+            left: 78%;
+            animation-duration: 26s;
+            animation-delay: 2s;
+            font-size: 55px;
+        }
+
+        .puzzle:nth-child(7) {
+            left: 90%;
+            animation-duration: 19s;
+            animation-delay: 8s;
+            font-size: 75px;
+        }
+
+        .puzzle:nth-child(8) {
+            left: 40%;
+            animation-duration: 31s;
+            animation-delay: 10s;
+            font-size: 38px;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-150px) rotate(0deg);
+            }
+            100% {
+                transform: translateY(120vh) rotate(360deg);
+            }
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.25);
         }
 
         h1 {
-            font-size: 60px;
-            margin-bottom: 10px;
+            font-size: 90px;
+            letter-spacing: 8px;
+            font-weight: 400;
+            text-transform: uppercase;
+            text-shadow:
+                0 0 12px rgba(255, 255, 255, 0.8),
+                0 0 35px rgba(160, 60, 255, 0.7);
         }
 
         h2 {
-            font-weight: normal;
-            opacity: 0.8;
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            letter-spacing: 8px;
+            color: #c685ff;
+            font-weight: 300;
+            text-transform: uppercase;
         }
 
         p {
-            font-size: 20px;
-            opacity: 0.8;
+            margin-top: 35px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        .button {
+            margin-top: 45px;
+            padding: 18px 55px;
+            border: 1px solid #a855f7;
+            color: #d8b4fe;
+            font-family: Arial, sans-serif;
+            letter-spacing: 5px;
+            text-decoration: none;
+            text-transform: uppercase;
+            background: rgba(80, 0, 120, 0.12);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.25);
+        }
+
+        .button:hover {
+            background: rgba(168, 85, 247, 0.25);
+        }
+
+        .links {
+            margin-top: 50px;
+            font-family: Arial, sans-serif;
         }
 
         .links a {
             color: white;
-            margin: 10px;
+            margin: 0 20px;
             text-decoration: none;
+            letter-spacing: 4px;
+            font-size: 13px;
+            text-transform: uppercase;
+            opacity: 0.8;
         }
 
         .links a:hover {
-            opacity: 0.6;
+            color: #c685ff;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 52px;
+                letter-spacing: 4px;
+            }
+
+            h2 {
+                font-size: 13px;
+                letter-spacing: 4px;
+            }
+
+            p {
+                font-size: 12px;
+                letter-spacing: 3px;
+            }
+
+            .button {
+                padding: 15px 30px;
+                font-size: 12px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div>
-        <h1>Puzzled</h1>
-<img src="https://via.placeholder.com/400x300" style="width: 300px; margin-top: 20px; border-radius: 10px;">
-        <h2>Not broken. Just different.</h2>
+    <div class="background">
+        <div class="puzzle">🧩</div>
+        <div class="puzzle">🧩</div>
+        <div class="puzzle">🧩</div>
+        <div class="puzzle">🧩</div>
+        <div class="puzzle">🧩</div>
+        <div class="puzzle">🧩</div>
+        <div class="puzzle">🧩</div>
+        <div class="puzzle">🧩</div>
+    </div>
 
+    <div class="content">
+        <h1>Puzzled</h1>
+        <h2>Not broken. Just different.</h2>
         <p>Autism awareness streetwear.</p>
 
-        <p style="margin-top: 40px;">First drop coming soon.</p>
+        <a class="button" href="#">First Drop Coming Soon</a>
 
-        <div class="links" style="margin-top: 30px;">
+        <div class="links">
             <a href="#">Instagram</a>
             <a href="#">TikTok</a>
         </div>
