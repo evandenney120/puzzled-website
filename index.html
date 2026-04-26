@@ -14,8 +14,7 @@
             min-height: 100vh;
             overflow: hidden;
             background:
-                radial-gradient(circle at 50% 45%, rgba(115, 0, 160, 0.5), transparent 32%),
-                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08), transparent 20%),
+                radial-gradient(circle at 50% 45%, rgba(115, 0, 160, 0.45), transparent 32%),
                 linear-gradient(135deg, #000000 0%, #09000d 45%, #1b0026 100%);
             font-family: "Times New Roman", serif;
         }
@@ -28,107 +27,71 @@
             perspective: 1200px;
         }
 
-        .piece {
+        .jigsaw {
             position: absolute;
             top: -420px;
-            width: 330px;
-            height: 330px;
-            opacity: 0.72;
-            transform-style: preserve-3d;
-
-            background:
-                linear-gradient(115deg,
-                    #ffffff 0%,
-                    #818181 12%,
-                    #f7f7f7 25%,
-                    #2a2a2a 39%,
-                    #f1f1f1 52%,
-                    #777777 65%,
-                    #ffffff 78%,
-                    #3b3b3b 100%);
-
-            clip-path: polygon(
-                28% 0%, 72% 0%,
-                72% 18%, 84% 18%, 84% 31%, 72% 31%,
-                72% 100%, 28% 100%,
-                28% 72%, 16% 72%, 16% 59%, 28% 59%,
-                28% 0%
-            );
-
-            box-shadow:
-                inset 18px 18px 35px rgba(255,255,255,0.7),
-                inset -22px -22px 40px rgba(0,0,0,0.75),
-                0 0 35px rgba(255,255,255,0.35),
-                0 0 85px rgba(168,85,247,0.5);
-
-            animation: fall3d linear infinite, chromePulse 5s ease-in-out infinite;
+            width: 420px;
+            height: 420px;
+            opacity: 0.75;
+            animation: fall3d linear infinite;
+            filter:
+                drop-shadow(0 0 18px rgba(255,255,255,0.35))
+                drop-shadow(0 0 55px rgba(168,85,247,0.45));
         }
 
-        .piece::before {
-            content: "";
-            position: absolute;
-            width: 34%;
-            height: 34%;
-            border-radius: 50%;
-            top: 33%;
-            right: -17%;
-            background: inherit;
-            box-shadow:
-                inset 10px 10px 22px rgba(255,255,255,0.6),
-                inset -12px -12px 25px rgba(0,0,0,0.65);
+        .jigsaw svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
         }
 
-        .piece::after {
-            content: "";
-            position: absolute;
-            width: 34%;
-            height: 34%;
-            border-radius: 50%;
-            left: -17%;
-            top: 33%;
-            background: #050005;
-            box-shadow:
-                inset 8px 8px 20px rgba(0,0,0,0.95),
-                inset -5px -5px 12px rgba(255,255,255,0.16);
+        .jigsaw:nth-child(1) {
+            left: -6%;
+            width: 430px;
+            height: 430px;
+            animation-duration: 32s;
+            animation-delay: 0s;
         }
 
-        .piece span {
-            position: absolute;
-            width: 34%;
-            height: 34%;
-            border-radius: 50%;
-            bottom: -17%;
-            left: 33%;
-            background: inherit;
-            box-shadow:
-                inset 10px 10px 22px rgba(255,255,255,0.6),
-                inset -12px -12px 25px rgba(0,0,0,0.65);
+        .jigsaw:nth-child(2) {
+            left: 15%;
+            width: 500px;
+            height: 500px;
+            animation-duration: 40s;
+            animation-delay: -9s;
         }
 
-        .piece:nth-child(1) { left: -4%;  width: 360px; height: 360px; animation-duration: 34s; animation-delay: 0s; }
-        .piece:nth-child(2) { left: 15%;  width: 420px; height: 420px; animation-duration: 42s; animation-delay: 5s; }
-        .piece:nth-child(3) { left: 38%;  width: 350px; height: 350px; animation-duration: 39s; animation-delay: 9s; }
-        .piece:nth-child(4) { left: 58%;  width: 460px; height: 460px; animation-duration: 48s; animation-delay: 2s; }
-        .piece:nth-child(5) { left: 80%;  width: 390px; height: 390px; animation-duration: 44s; animation-delay: 7s; }
+        .jigsaw:nth-child(3) {
+            left: 38%;
+            width: 420px;
+            height: 420px;
+            animation-duration: 36s;
+            animation-delay: -17s;
+        }
+
+        .jigsaw:nth-child(4) {
+            left: 60%;
+            width: 540px;
+            height: 540px;
+            animation-duration: 46s;
+            animation-delay: -5s;
+        }
+
+        .jigsaw:nth-child(5) {
+            left: 82%;
+            width: 460px;
+            height: 460px;
+            animation-duration: 42s;
+            animation-delay: -22s;
+        }
 
         @keyframes fall3d {
             0% {
-                transform: translateY(-450px) rotateX(15deg) rotateY(0deg) rotateZ(0deg);
+                transform: translateY(-320px) rotateX(15deg) rotateY(0deg) rotateZ(0deg);
             }
-            50% {
-                transform: translateY(55vh) rotateX(120deg) rotateY(180deg) rotateZ(80deg);
-            }
-            100% {
-                transform: translateY(135vh) rotateX(250deg) rotateY(360deg) rotateZ(160deg);
-            }
-        }
 
-        @keyframes chromePulse {
-            0%, 100% {
-                filter: brightness(1) contrast(1.15);
-            }
-            50% {
-                filter: brightness(1.45) contrast(1.35);
+            100% {
+                transform: translateY(140vh) rotateX(260deg) rotateY(360deg) rotateZ(160deg);
             }
         }
 
@@ -142,7 +105,7 @@
             align-items: center;
             text-align: center;
             padding: 35px;
-            background: rgba(0,0,0,0.15);
+            background: rgba(0,0,0,0.16);
         }
 
         .chrome-text {
@@ -189,22 +152,20 @@
             text-transform: uppercase;
         }
 
-        .button {
+        .drop-box {
             margin-top: 46px;
-            padding: 18px 58px;
-            border: 1px solid rgba(230,230,230,0.85);
+            padding: 20px 60px;
+            border: 1px solid rgba(230,230,230,0.9);
+            border-radius: 14px;
             font-family: Arial, sans-serif;
             letter-spacing: 4px;
-            text-decoration: none;
             text-transform: uppercase;
-            background: rgba(255,255,255,0.06);
+            background:
+                linear-gradient(135deg, rgba(255,255,255,0.13), rgba(255,255,255,0.02));
             box-shadow:
-                0 0 18px rgba(255,255,255,0.18),
-                0 0 36px rgba(168,85,247,0.28);
-        }
-
-        .button:hover {
-            background: rgba(255,255,255,0.14);
+                inset 0 0 18px rgba(255,255,255,0.08),
+                0 0 22px rgba(255,255,255,0.18),
+                0 0 44px rgba(168,85,247,0.3);
         }
 
         .links {
@@ -236,14 +197,14 @@
                 letter-spacing: 3px;
             }
 
-            .button {
-                padding: 15px 30px;
+            .drop-box {
+                padding: 16px 28px;
                 font-size: 11px;
             }
 
-            .piece {
-                width: 230px !important;
-                height: 230px !important;
+            .jigsaw {
+                width: 260px !important;
+                height: 260px !important;
             }
         }
     </style>
@@ -252,11 +213,234 @@
 <body>
 
     <div class="background">
-        <div class="piece"><span></span></div>
-        <div class="piece"><span></span></div>
-        <div class="piece"><span></span></div>
-        <div class="piece"><span></span></div>
-        <div class="piece"><span></span></div>
+
+        <div class="jigsaw">
+            <svg viewBox="0 0 300 300">
+                <defs>
+                    <linearGradient id="chrome1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffffff"/>
+                        <stop offset="15%" stop-color="#8f8f8f"/>
+                        <stop offset="30%" stop-color="#f8f8f8"/>
+                        <stop offset="48%" stop-color="#292929"/>
+                        <stop offset="64%" stop-color="#dcdcdc"/>
+                        <stop offset="82%" stop-color="#ffffff"/>
+                        <stop offset="100%" stop-color="#555555"/>
+                    </linearGradient>
+                </defs>
+
+                <path
+                    d="
+                    M 70 20
+                    L 130 20
+                    C 122 48, 152 66, 170 44
+                    C 188 22, 225 37, 225 70
+                    C 225 103, 188 118, 170 96
+                    C 152 74, 122 92, 130 120
+                    L 220 120
+                    L 220 180
+                    C 192 172, 174 202, 196 220
+                    C 218 238, 203 275, 170 275
+                    C 137 275, 122 238, 144 220
+                    C 166 202, 148 172, 120 180
+                    L 120 250
+                    L 70 250
+                    L 70 180
+                    C 42 188, 24 158, 46 140
+                    C 68 122, 53 85, 20 85
+                    C -13 85, -28 122, -6 140
+                    C 16 158, -2 188, -30 180
+                    L -30 120
+                    L 70 120
+                    C 78 92, 48 74, 30 96
+                    C 12 118, -25 103, -25 70
+                    C -25 37, 12 22, 30 44
+                    C 48 66, 78 48, 70 20
+                    Z"
+                    fill="url(#chrome1)"
+                    stroke="rgba(255,255,255,0.7)"
+                    stroke-width="3"
+                />
+            </svg>
+        </div>
+
+        <div class="jigsaw">
+            <svg viewBox="0 0 300 300">
+                <defs>
+                    <linearGradient id="chrome2" x1="100%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#ffffff"/>
+                        <stop offset="18%" stop-color="#777777"/>
+                        <stop offset="34%" stop-color="#f4f4f4"/>
+                        <stop offset="50%" stop-color="#1f1f1f"/>
+                        <stop offset="70%" stop-color="#eeeeee"/>
+                        <stop offset="100%" stop-color="#5d5d5d"/>
+                    </linearGradient>
+                </defs>
+
+                <path
+                    d="
+                    M 55 35
+                    L 125 35
+                    C 118 5, 150 -15, 170 12
+                    C 190 39, 224 24, 224 68
+                    C 224 112, 190 97, 170 124
+                    C 150 151, 118 131, 125 100
+                    L 245 100
+                    L 245 170
+                    C 214 162, 194 194, 221 214
+                    C 248 234, 230 268, 186 268
+                    C 142 268, 124 234, 151 214
+                    C 178 194, 158 162, 128 170
+                    L 128 245
+                    L 55 245
+                    L 55 170
+                    C 24 178, 4 146, 31 126
+                    C 58 106, 40 72, -4 72
+                    C -48 72, -66 106, -39 126
+                    C -12 146, -32 178, -63 170
+                    L -63 100
+                    L 55 100
+                    Z"
+                    fill="url(#chrome2)"
+                    stroke="rgba(255,255,255,0.7)"
+                    stroke-width="3"
+                />
+            </svg>
+        </div>
+
+        <div class="jigsaw">
+            <svg viewBox="0 0 300 300">
+                <defs>
+                    <linearGradient id="chrome3" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#4a4a4a"/>
+                        <stop offset="16%" stop-color="#ffffff"/>
+                        <stop offset="32%" stop-color="#999999"/>
+                        <stop offset="50%" stop-color="#f6f6f6"/>
+                        <stop offset="67%" stop-color="#222222"/>
+                        <stop offset="84%" stop-color="#efefef"/>
+                        <stop offset="100%" stop-color="#666666"/>
+                    </linearGradient>
+                </defs>
+
+                <path
+                    d="
+                    M 45 25
+                    L 115 25
+                    C 107 55, 137 74, 158 51
+                    C 179 28, 215 43, 215 78
+                    C 215 113, 179 128, 158 105
+                    C 137 82, 107 101, 115 130
+                    L 235 130
+                    L 235 195
+                    C 205 187, 186 217, 209 238
+                    C 232 259, 217 293, 182 293
+                    C 147 293, 132 259, 155 238
+                    C 178 217, 159 187, 130 195
+                    L 130 270
+                    L 45 270
+                    L 45 195
+                    C 16 203, -3 173, 20 152
+                    C 43 131, 28 95, -7 95
+                    C -42 95, -57 131, -34 152
+                    C -11 173, -30 203, -60 195
+                    L -60 130
+                    L 45 130
+                    Z"
+                    fill="url(#chrome3)"
+                    stroke="rgba(255,255,255,0.7)"
+                    stroke-width="3"
+                />
+            </svg>
+        </div>
+
+        <div class="jigsaw">
+            <svg viewBox="0 0 300 300">
+                <defs>
+                    <linearGradient id="chrome4" x1="20%" y1="0%" x2="80%" y2="100%">
+                        <stop offset="0%" stop-color="#ffffff"/>
+                        <stop offset="22%" stop-color="#6f6f6f"/>
+                        <stop offset="39%" stop-color="#ffffff"/>
+                        <stop offset="55%" stop-color="#2c2c2c"/>
+                        <stop offset="73%" stop-color="#dedede"/>
+                        <stop offset="100%" stop-color="#515151"/>
+                    </linearGradient>
+                </defs>
+
+                <path
+                    d="
+                    M 80 10
+                    L 150 10
+                    C 142 40, 172 59, 193 36
+                    C 214 13, 250 28, 250 63
+                    C 250 98, 214 113, 193 90
+                    C 172 67, 142 86, 150 115
+                    L 250 115
+                    L 250 185
+                    C 220 177, 201 207, 224 228
+                    C 247 249, 232 283, 197 283
+                    C 162 283, 147 249, 170 228
+                    C 193 207, 174 177, 145 185
+                    L 145 265
+                    L 80 265
+                    L 80 185
+                    C 50 193, 31 163, 54 142
+                    C 77 121, 62 85, 27 85
+                    C -8 85, -23 121, 0 142
+                    C 23 163, 4 193, -25 185
+                    L -25 115
+                    L 80 115
+                    Z"
+                    fill="url(#chrome4)"
+                    stroke="rgba(255,255,255,0.7)"
+                    stroke-width="3"
+                />
+            </svg>
+        </div>
+
+        <div class="jigsaw">
+            <svg viewBox="0 0 300 300">
+                <defs>
+                    <linearGradient id="chrome5" x1="100%" y1="100%" x2="0%" y2="0%">
+                        <stop offset="0%" stop-color="#ffffff"/>
+                        <stop offset="12%" stop-color="#8b8b8b"/>
+                        <stop offset="28%" stop-color="#f9f9f9"/>
+                        <stop offset="47%" stop-color="#242424"/>
+                        <stop offset="66%" stop-color="#ededed"/>
+                        <stop offset="85%" stop-color="#ffffff"/>
+                        <stop offset="100%" stop-color="#5c5c5c"/>
+                    </linearGradient>
+                </defs>
+
+                <path
+                    d="
+                    M 65 20
+                    L 145 20
+                    C 137 50, 167 69, 188 46
+                    C 209 23, 245 38, 245 73
+                    C 245 108, 209 123, 188 100
+                    C 167 77, 137 96, 145 125
+                    L 245 125
+                    L 245 190
+                    C 215 182, 196 212, 219 233
+                    C 242 254, 227 288, 192 288
+                    C 157 288, 142 254, 165 233
+                    C 188 212, 169 182, 140 190
+                    L 140 260
+                    L 65 260
+                    L 65 190
+                    C 35 198, 16 168, 39 147
+                    C 62 126, 47 90, 12 90
+                    C -23 90, -38 126, -15 147
+                    C 8 168, -11 198, -40 190
+                    L -40 125
+                    L 65 125
+                    Z"
+                    fill="url(#chrome5)"
+                    stroke="rgba(255,255,255,0.7)"
+                    stroke-width="3"
+                />
+            </svg>
+        </div>
+
     </div>
 
     <div class="content">
@@ -264,7 +448,7 @@
         <h2 class="chrome-text">Not broken. Just different.</h2>
         <p class="chrome-text">Autism awareness streetwear.</p>
 
-        <a class="button chrome-text" href="#">First Drop Coming Soon</a>
+        <div class="drop-box chrome-text">First Drop Coming Soon!</div>
 
         <div class="links">
             <a class="chrome-text" href="#">Instagram</a>
