@@ -14,7 +14,6 @@
             min-height: 100vh;
             overflow: hidden;
             font-family: "Times New Roman", serif;
-            color: white;
             background: radial-gradient(circle at center, #2b0033 0%, #050005 45%, #000000 100%);
         }
 
@@ -27,79 +26,94 @@
 
         .puzzle {
             position: absolute;
-            top: -120px;
-            font-size: 60px;
-            color: rgba(220, 220, 220, 0.75);
-            text-shadow:
-                0 0 10px rgba(255, 255, 255, 0.9),
-                0 0 25px rgba(160, 60, 255, 0.7),
-                0 0 45px rgba(120, 0, 180, 0.8);
+            top: -220px;
+            font-size: 145px;
+            line-height: 1;
+            color: transparent;
+
+            /* Chrome effect */
+            background: linear-gradient(
+                120deg,
+                #ffffff 0%,
+                #8f8f8f 18%,
+                #f5f5f5 35%,
+                #4a4a4a 50%,
+                #dcdcdc 65%,
+                #ffffff 80%,
+                #6b6b6b 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.7))
+                    drop-shadow(0 0 25px rgba(160,60,255,0.7));
+
             animation: fall linear infinite;
-            opacity: 0.75;
+            opacity: 0.9;
         }
 
         .puzzle:nth-child(1) {
-            left: 5%;
-            animation-duration: 18s;
+            left: 3%;
+            animation-duration: 24s;
             animation-delay: 0s;
-            font-size: 85px;
+            font-size: 180px;
         }
 
         .puzzle:nth-child(2) {
-            left: 18%;
-            animation-duration: 24s;
-            animation-delay: 3s;
-            font-size: 45px;
+            left: 17%;
+            animation-duration: 31s;
+            animation-delay: 4s;
+            font-size: 150px;
         }
 
         .puzzle:nth-child(3) {
             left: 32%;
-            animation-duration: 20s;
-            animation-delay: 6s;
-            font-size: 70px;
+            animation-duration: 27s;
+            animation-delay: 8s;
+            font-size: 170px;
         }
 
         .puzzle:nth-child(4) {
-            left: 48%;
-            animation-duration: 28s;
-            animation-delay: 1s;
-            font-size: 50px;
+            left: 47%;
+            animation-duration: 35s;
+            animation-delay: 2s;
+            font-size: 155px;
         }
 
         .puzzle:nth-child(5) {
-            left: 63%;
-            animation-duration: 22s;
-            animation-delay: 5s;
-            font-size: 90px;
+            left: 61%;
+            animation-duration: 29s;
+            animation-delay: 6s;
+            font-size: 190px;
         }
 
         .puzzle:nth-child(6) {
-            left: 78%;
-            animation-duration: 26s;
-            animation-delay: 2s;
-            font-size: 55px;
+            left: 76%;
+            animation-duration: 33s;
+            animation-delay: 3s;
+            font-size: 160px;
         }
 
         .puzzle:nth-child(7) {
-            left: 90%;
-            animation-duration: 19s;
-            animation-delay: 8s;
-            font-size: 75px;
+            left: 88%;
+            animation-duration: 26s;
+            animation-delay: 10s;
+            font-size: 185px;
         }
 
         .puzzle:nth-child(8) {
-            left: 40%;
-            animation-duration: 31s;
-            animation-delay: 10s;
-            font-size: 38px;
+            left: 41%;
+            animation-duration: 38s;
+            animation-delay: 13s;
+            font-size: 145px;
         }
 
         @keyframes fall {
             0% {
-                transform: translateY(-150px) rotate(0deg);
+                transform: translateY(-250px) rotate(0deg);
             }
             100% {
-                transform: translateY(120vh) rotate(360deg);
+                transform: translateY(125vh) rotate(360deg);
             }
         }
 
@@ -113,7 +127,26 @@
             align-items: center;
             text-align: center;
             padding: 30px;
-            background: rgba(0, 0, 0, 0.25);
+            background: rgba(0, 0, 0, 0.28);
+        }
+
+        .chrome-text {
+            color: transparent;
+            background: linear-gradient(
+                120deg,
+                #ffffff 0%,
+                #777777 15%,
+                #f7f7f7 30%,
+                #3f3f3f 45%,
+                #d9d9d9 60%,
+                #ffffff 75%,
+                #8a8a8a 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow:
+                0 0 10px rgba(255,255,255,0.45),
+                0 0 30px rgba(168,85,247,0.45);
         }
 
         h1 {
@@ -121,9 +154,6 @@
             letter-spacing: 8px;
             font-weight: 400;
             text-transform: uppercase;
-            text-shadow:
-                0 0 12px rgba(255, 255, 255, 0.8),
-                0 0 35px rgba(160, 60, 255, 0.7);
         }
 
         h2 {
@@ -131,7 +161,6 @@
             font-family: Arial, sans-serif;
             font-size: 18px;
             letter-spacing: 8px;
-            color: #c685ff;
             font-weight: 300;
             text-transform: uppercase;
         }
@@ -142,24 +171,24 @@
             font-size: 16px;
             letter-spacing: 6px;
             text-transform: uppercase;
-            opacity: 0.9;
         }
 
         .button {
             margin-top: 45px;
             padding: 18px 55px;
-            border: 1px solid #a855f7;
-            color: #d8b4fe;
+            border: 1px solid #cfcfcf;
             font-family: Arial, sans-serif;
             letter-spacing: 5px;
             text-decoration: none;
             text-transform: uppercase;
-            background: rgba(80, 0, 120, 0.12);
-            box-shadow: 0 0 25px rgba(168, 85, 247, 0.25);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow:
+                0 0 18px rgba(255,255,255,0.25),
+                0 0 30px rgba(168,85,247,0.25);
         }
 
         .button:hover {
-            background: rgba(168, 85, 247, 0.25);
+            background: rgba(255, 255, 255, 0.14);
         }
 
         .links {
@@ -168,20 +197,18 @@
         }
 
         .links a {
-            color: white;
             margin: 0 20px;
             text-decoration: none;
             letter-spacing: 4px;
             font-size: 13px;
             text-transform: uppercase;
-            opacity: 0.8;
-        }
-
-        .links a:hover {
-            color: #c685ff;
         }
 
         @media (max-width: 600px) {
+            .puzzle {
+                font-size: 110px;
+            }
+
             h1 {
                 font-size: 52px;
                 letter-spacing: 4px;
@@ -219,15 +246,15 @@
     </div>
 
     <div class="content">
-        <h1>Puzzled</h1>
-        <h2>Not broken. Just different.</h2>
-        <p>Autism awareness streetwear.</p>
+        <h1 class="chrome-text">Puzzled</h1>
+        <h2 class="chrome-text">Not broken. Just different.</h2>
+        <p class="chrome-text">Autism awareness streetwear.</p>
 
-        <a class="button" href="#">First Drop Coming Soon</a>
+        <a class="button chrome-text" href="#">First Drop Coming Soon</a>
 
         <div class="links">
-            <a href="#">Instagram</a>
-            <a href="#">TikTok</a>
+            <a class="chrome-text" href="#">Instagram</a>
+            <a class="chrome-text" href="#">TikTok</a>
         </div>
     </div>
 
